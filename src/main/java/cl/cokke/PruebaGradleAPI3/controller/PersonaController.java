@@ -1,5 +1,6 @@
 package cl.cokke.PruebaGradleAPI3.controller;
 
+import cl.cokke.PruebaGradleAPI3.exception.BadRequestException;
 import cl.cokke.PruebaGradleAPI3.model.Persona;
 import cl.cokke.PruebaGradleAPI3.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,9 @@ public class PersonaController {
 
     @PostMapping("create")
     public ResponseEntity<?> crearPersona(@RequestBody Persona p){
-
+        if (p == null) {
+            throw new BadRequestException("Persona es requerida");
+        }
         return new ResponseEntity<>(personaService.create(p), HttpStatus.CREATED);
     }
 }
