@@ -22,7 +22,6 @@ public class Persona {
     private String nombre;
     private String apellido;
     @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
 }
